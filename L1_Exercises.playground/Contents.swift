@@ -22,7 +22,7 @@ print(yourSentence)
 print(yourSillySentence)
 //: ### Exercise 2
 //: Recreate the shoutString by using the didYouKnowString as a stem.
-let didYouKnowString = "Did you know that the Swift String class comes with lots of useful methods?"
+let didYouKnowString = "Did you know that we could see northen lights crearly in Vanvouver?"
 let whisperString = "psst" + ", " + didYouKnowString.lowercased()
 let shoutString =  "HEY! DID YOU KNOW THAT THE SWIFT STRING CLASS COMES WITH LOTS OF USEFUL METHODS?"
 print(didYouKnowString.uppercased())
@@ -33,7 +33,7 @@ print(howManyCharacters.characters.count)
 
 //: ### Exercise 4
 //: How many times does the letter "g" or "G" appear in the following string? Use a for-in loop to find out!
-let gString = "Gary's giraffe gobbled gooseberries greedily"
+let gString = "Gary's giraffe gobbled gooseberries greedily, Gary?"
 var count = 0
 for char in gString.characters {
     if (char == "g" || char == "G") {
@@ -45,11 +45,13 @@ print(count)
 //: ### Exercise 5
 //: Write a program that tells you whether or not this string contains the substring "tuna".
 let word = "fortunate"
+let word2 = "forever"
 print(word.contains("tuna"))
+print(word2.contains("tuna"))
 //: ### Exercise 6
 //: Write a program that deletes all occurrences of the word "like" in the following string.
 let lottaLikes = "If like, you wanna learn Swift, like, you should build lots of small apps, cuz it's like, a good way to practice."
-var noLikes = lottaLikes.replacingOccurrences(of: "like", with: "")
+var noLikes = lottaLikes.replacingOccurrences(of: "like, ", with: "")
 print(noLikes)
 //: ### Exercise 7
 // Example
@@ -59,15 +61,19 @@ let newerString = newString.replacingOccurrences(of: "iPhone", with: "📱")
 //: Repeat the above string manipulation, but this time using a for-in loop.
 //: You can start off with this dictionary and string.
 let dictionary = ["monkey": "🐒", "iPhone":"📱"]
-var output: String = ""
-
-var newestString = sillyMonkeyString
-
+var output: String = sillyMonkeyString
+for (key, value) in dictionary {
+    output = output.replacingOccurrences(of: key, with: value)
+}
+print(output)
 //: ### Exercise 8
 //: Josie has been saving her pennies and has them all counted up. Write a program that, given a number of pennies, prints out how much money Josie has in dollars and cents.
 // Example
 let numOfPennies = 567
 //desired output = "$5.67"
+var price = Double(numOfPennies) / 100.00
+print("$ \(price)")
+
 //: # Let or Var?
 import UIKit
 import Foundation
