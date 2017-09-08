@@ -79,15 +79,15 @@ import UIKit
 import Foundation
 //: ### Exercise 9
 //: Below is the code to find all the numbers present in an array, convert them to Ints, and calculate their sum. Have a look at the entities declared below: array, sum, and intToAdd. Think about whether each should be a constant or a variable and choose whether to declare them with let or var. When you're finished uncomment the code and see if the compiler agrees with your choices!
-// let or var array = ["A", "13", "B","5","87", "t", "41"] // TODO: Choose constant or variable
-// let or var sum = 0 // TODO: Choose constant or variable
-// for string in array {
-//     if Int(string) != nil {
-//         let or var intToAdd = Int(string)! // TODO: Choose constant or variable
-//         sum += intToAdd
-//     }
-// }
-// print(sum)
+let array = ["A", "13", "B","5","87", "t", "41"]
+var sum = 0
+for string in array {
+    if Int(string) != nil {
+        var intToAdd = Int(string)!
+        sum += intToAdd
+    }
+}
+ print(sum)
 //: ### Exercise 10
 //: For each of the following pairs, choose whether to declare a constant or a variable.
 //:
@@ -97,16 +97,22 @@ import Foundation
 let summitElevation: Int
 var currentElevation: Int
 //: 10a) Imagine you are writing a quiz app, and you need to program a timer that will stop a quiz after 20 min. Declare four entities: startTime, currentTime, maximumTimeAllowed, and timeRemaining. Don't worry about encoding their values.
+let startTime: Int
+var currentTime: Int
+let maximumTimeAllowed: Int
+var timeRemaing: Int
 
+let creditLimit: Int
+var balance: Int
 //: 10b) Imagine you are writing an app for a credit card company. Declare two entities: creditLimit and balance.
 //: ### Exercise 11
 //: Below is the code to reverse a string. Have a look at the entities declared: stringToReverse and reversedString. Choose whether to declare each with let or var. When you're finished uncomment the code and see if the compiler agrees with your choices!
-//let or var stringToReverse = "Mutable or Immutable? That is the question." //TODO:Choose let or var
-//let or var reversedString = "" //TODO:Choose let or var
-//for character in stringToReverse.characters {
-//    reversedString = "\(character)" + reversedString
-//}
-//print(reversedString, terminator: "")
+let stringToReverse = "Mutable or Immutable? That is the question."
+var reversedString = ""
+for character in stringToReverse.characters {
+    reversedString = "\(character)" + reversedString
+}
+print(reversedString, terminator: "")
 
 
 
