@@ -14,14 +14,23 @@ var surnames = ["Silverman", "Fey", "Whig", "Schumer", "Kaling"]
 let orderedSurnames = surnames.sorted(by: {(name1: String, name2: String) -> Bool in
     return name2 > name1
 })
-let orderedSurnames2 = surnames.sorted(by: { $0 > $1 })
+
+let orderedSurnames2 = surnames.sorted(by: {
+    $0 > $1
+})
 print(orderedSurnames2)
+
 
 // 2
 let battingAverages = [0.302, 0.556, 0.280, 0.500, 0.281, 0.285]
 let sortedAverages = battingAverages.sorted(by: {(average1: Double, average2: Double) -> Bool in
     return average2 > average1
 })
+
+let reversedAverages = battingAverages.sorted(by: {
+    $0 > $1
+})
+print(reversedAverages)
 
 //: __Problem 3__
 //:
@@ -35,6 +44,7 @@ let divisibleByThree = numbers.filter({(number: Int) -> Bool in
 //: __3a.__
 //:Filter the following array for the numbers which are divisible by 12.
 let numbersAsStrings = ["685", "1728", "648", "87", "979", "59175432"]
+
 let result = numbersAsStrings.filter({(num: String) -> Bool in
     Int(num)! % 12 == 0
 })
@@ -47,11 +57,16 @@ let result2 = numbersAsStrings.filter({
     Int($0)! % 12 == 0
 })
 
-print(result)
+print(result2)
 //: __Problem 4__
 //:
 //: Filtering out particles greater that 20 microns has been shown to reduce exposure to waterborne pathogens. Filter the following array for all of the particles below 20 microns in size. Assign the result to a new array.
 let particleSizesInMicrons = [150, 16, 82, 30, 10, 57]
+
+var underTwentyMicrons = particleSizesInMicrons.filter({(size: Int) -> Bool in
+    size < 20
+})
+print(underTwentyMicrons)
 
 //: __Problem 5__
 //:
@@ -64,6 +79,11 @@ let sizesAsStrings = particleSizesInMicrons.map({ (size: Int) -> String in
 //: Ben just got back from India and he is tallying what he spent on gifts for his customs form.
 //: Use the map() method to transform this array of prices into dollars. Round to the nearest dollar.
 let pricesInRupees = [750, 825, 2000, 725]
+
+let pricesInDollars = pricesInRupees.map({(price: Int) -> String in
+    var dollars = price/64
+    return "$\(dollars)"
+})
 
 //: __Problem 6__
 //:
@@ -83,6 +103,12 @@ func timeStringFromInterval(_ timeInterval: Int) -> NSString {
     let minutes = (timeInterval/60) % 60
     return NSString(format: "%.1d:%.2d",minutes,seconds)
 }
-String
 
 var oldTimes = ["5:18", "5:45", "5:56", "5:25", "5:27"]
+
+var goalTimes = oldTimes.map(){(time: String) -> String in
+    var totalSeconds = timeIntervalFromString(time)
+    totalSeconds += 13
+    var goalTimeString = timeStringFromInterval(totalSeconds)
+    return goalTimeString as String
+}
