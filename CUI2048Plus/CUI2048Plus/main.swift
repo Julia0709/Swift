@@ -22,17 +22,27 @@ func generateNewNumber() {
     let randomIndex = Int(arc4random_uniform(UInt32(emptyTiles.count)))
     let t = emptyTiles[randomIndex]
     matrix[t[0]][t[1]] = 2
-    
 }
 
-print("Welcome to 2048+!")
+func displayTiles() {
+    for (_, row) in matrix.enumerated() {
+        for (_, n) in row.enumerated() {
+            let s = String(format: "%04d", n)
+            print(" \(s) ", terminator:"")
+        }
+        print("\n")
+    }
+}
+
+print("Welcome to 2048+!\n")
 
 generateNewNumber()
 
 while (true) {
 
     generateNewNumber()
-    print(matrix)
+
+    displayTiles()
 
     print("i(↑)  j(←)  k(↓)  l(→) | p(pose)")
     var move: String = readLine()!
