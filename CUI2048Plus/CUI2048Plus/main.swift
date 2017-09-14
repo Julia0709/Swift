@@ -9,6 +9,7 @@
 import Foundation
 
 let length = 4
+var time = 0;
 var originalMatrix: [[Int]] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
 // Generate and add a new '2' tile
@@ -99,18 +100,48 @@ func shiftLeft(matrix: inout [[Int]]) -> [[Int]] {
     return matrix
 }
 
+// Shift up
+func shiftUp() {
+    // Rotate 270˚ clockwise
+    time = 3
+    rotate(matrix: &originalMatrix, times: &time)
+
+    // Shift tiles
+    shiftLeft(matrix: &originalMatrix)
+    
+    // Rotate 90˚ clockwise
+    time = 1
+    rotate(matrix: &originalMatrix, times: &time)
+}
+
+// Shift down
 func shiftDown() {
     // Rotate 90˚ clockwise
-    var n1 = 1
-    rotate(matrix: &originalMatrix, times: &n1)
+    time = 1
+    rotate(matrix: &originalMatrix, times: &time)
 
 
     // Shift tiles
     shiftLeft(matrix: &originalMatrix)
     
     // Rotate 270˚ clockwise
-    var n3 = 3
-    rotate(matrix: &originalMatrix, times: &n3)
+    time = 3
+    rotate(matrix: &originalMatrix, times: &time)
+}
+
+// Shift right
+func shiftRight() {
+    // Rotate 180˚ clockwise
+    time = 2
+    rotate(matrix: &originalMatrix, times: &time)
+    
+    
+    // Shift tiles
+    shiftLeft(matrix: &originalMatrix)
+    
+    // Rotate 180˚ clockwise
+    time = 2
+    rotate(matrix: &originalMatrix, times: &time)
 }
 
 print("Welcome to 2048+!\n")
@@ -128,7 +159,7 @@ while (true) {
 
     switch(move) {
         case "i":
-            // shiftUp()
+            shiftUp()
             break
         case "j":
             shiftLeft(matrix: &originalMatrix)
@@ -137,7 +168,7 @@ while (true) {
             shiftDown()
         break
         case "l":
-            // shiftRight()
+            shiftRight()
             break
         case "p":
             break
