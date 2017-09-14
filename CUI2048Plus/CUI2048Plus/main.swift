@@ -36,6 +36,7 @@ func generateNewNumber() {
 func displayTiles() {
     for y in 0..<originalMatrix.count {
         let row = originalMatrix[y]
+        print("+---------------------------+\n|      |      |      |      |")
         for x in 0..<row.count {
             var s = String(row[x])
             let l = MAX_DIGITS - s.characters.count
@@ -44,10 +45,11 @@ func displayTiles() {
                     s = " " + s
                 }
             }
-            print(" \(s) ", terminator:"")
+            print("| \(s) ", terminator:"")
         }
-        print("\n")
+        print("|\n|      |      |      |      |")
     }
+    print("+---------------------------+")
 }
 
 // Rotate matrix clockwise
@@ -166,15 +168,19 @@ while (true) {
 
     switch(move) {
         case "i":
+            print("UP(↑)")
             shiftUp()
             break
         case "j":
+            print("LEFT(←)")
             shiftLeft(matrix: &originalMatrix)
             break
         case "k":
+            print("DOWN(↓)")
             shiftDown()
-        break
+            break
         case "l":
+            print("RIGHT(→)")
             shiftRight()
             break
         case "p":
