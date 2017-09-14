@@ -11,6 +11,7 @@ import Foundation
 let length = 4
 var originalMatrix: [[Int]] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
+// Generate and add a new '2' tile
 func generateNewNumber() {
     var emptyTiles = [[Int]]()
     for (y, row) in originalMatrix.enumerated() {
@@ -29,6 +30,7 @@ func generateNewNumber() {
     }
 }
 
+// Format and print matrix
 func displayTiles() {
     for y in 0..<originalMatrix.count {
         let row = originalMatrix[y]
@@ -40,7 +42,24 @@ func displayTiles() {
     }
 }
 
-func shiftLeft( matrix: inout [[Int]]) -> [[Int]] {
+// Rotate matrix clockwise
+func rotate(matrix: inout [[Int]], times: inout Int) -> [[Int]] {
+    while (times > 0) {
+        var rotatedMatrix = Array(repeating: Array(repeating: 0, count: length), count: length)
+        for y in 0..<matrix.count {
+            let l = matrix[y].count
+            for x in 0..<l {
+                rotatedMatrix[y][x] = matrix[l - x - 1][y]
+            }
+        }
+        matrix = rotatedMatrix
+        times -= 1
+    }
+    return matrix
+}
+
+// Shift left
+func shiftLeft(matrix: inout [[Int]]) -> [[Int]] {
     for y in 0..<matrix.count {
         let row = matrix[y]
         for x1 in 0..<row.count-1 {
@@ -81,41 +100,17 @@ func shiftLeft( matrix: inout [[Int]]) -> [[Int]] {
 }
 
 func shiftDown() {
-    // 90º
-    var rotatedMatrix = Array(repeating: Array(repeating: 0, count: length), count: length)
-    for y in 0..<originalMatrix.count {
-        let l = originalMatrix[y].count
-        for x in 0..<l {
-            rotatedMatrix[y][x] = originalMatrix[l - x - 1][y]
-        }
-    }
+    // Rotate 90˚ clockwise
+    var n1 = 1
+    rotate(matrix: &originalMatrix, times: &n1)
+
 
     // Shift tiles
-    shiftLeft(matrix: &rotatedMatrix)
+    shiftLeft(matrix: &originalMatrix)
     
-    // 180º
-    for y in 0..<rotatedMatrix.count {
-        let l = rotatedMatrix[y].count
-        for x in 0..<l {
-            originalMatrix[y][x] = rotatedMatrix[l - x - 1][y]
-        }
-    }
-
-    // 270º
-    for y in 0..<rotatedMatrix.count {
-        let l = rotatedMatrix[y].count
-        for x in 0..<l {
-            originalMatrix[y][x] = rotatedMatrix[l - x - 1][y]
-        }
-    }
-    
-    // 360º
-    for y in 0..<rotatedMatrix.count {
-        let l = rotatedMatrix[y].count
-        for x in 0..<l {
-            originalMatrix[y][x] = rotatedMatrix[l - x - 1][y]
-        }
-    }
+    // Rotate 270˚ clockwise
+    var n3 = 3
+    rotate(matrix: &originalMatrix, times: &n3)
 }
 
 print("Welcome to 2048+!\n")
