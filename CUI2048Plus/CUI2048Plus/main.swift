@@ -8,6 +8,7 @@
 
 import Foundation
 
+let MAX_DIGITS = 4
 let length = 4
 var time = 0;
 var originalMatrix: [[Int]] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
@@ -36,7 +37,13 @@ func displayTiles() {
     for y in 0..<originalMatrix.count {
         let row = originalMatrix[y]
         for x in 0..<row.count {
-            let s = String(format: "%04d", row[x])
+            var s = String(row[x])
+            let l = MAX_DIGITS - s.characters.count
+            if (l > 0) {
+                for _ in 0...l - 1 {
+                    s = " " + s
+                }
+            }
             print(" \(s) ", terminator:"")
         }
         print("\n")
