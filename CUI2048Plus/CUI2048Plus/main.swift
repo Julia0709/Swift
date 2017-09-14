@@ -12,10 +12,10 @@ var matrix: [[Int]] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
 func generateNewNumber() {
     var emptyTiles = [[Int]]()
-    for (x, row) in matrix.enumerated() {
-        for (y, n) in row.enumerated() {
+    for (y, row) in matrix.enumerated() {
+        for (x, n) in row.enumerated() {
             if (n == 0) {
-                emptyTiles.append([x, y])
+                emptyTiles.append([y, x])
             }
         }
     }
@@ -25,12 +25,54 @@ func generateNewNumber() {
 }
 
 func displayTiles() {
-    for (_, row) in matrix.enumerated() {
-        for (_, n) in row.enumerated() {
-            let s = String(format: "%04d", n)
+    for y in 0..<matrix.count {
+        let row = matrix[y]
+        for x in 0..<row.count {
+//            let s = String(format: "%04d", n)
+            let s = row[x]
             print(" \(s) ", terminator:"")
         }
         print("\n")
+    }
+}
+
+func shiftLeft() {
+    for y in 0..<matrix.count {
+        let row = matrix[y]
+        for x1 in 0..<row.count-1 {
+            let n1 = matrix[y][x1]
+            if (n1 == 0) {
+                continue
+            }
+            for x2 in x1+1..<row.count {
+                let n2 = matrix[y][x2]
+                if (n2 == 0) {
+                    continue
+                }
+                if (n1 != n2) {
+                    break
+                }
+                matrix[y][x1] = n1 + n2
+                matrix[y][x2] = 0
+                break
+            }
+        }
+
+        var positions = [Int]()
+        for x in 0..<row.count {
+            let n = row[x]
+            if (n == 0) {
+                positions.append(x)
+                continue
+            }
+            if (positions.count > 0) {
+                print(positions[0])
+                matrix[y][positions[0]] = n
+                matrix[y][x] = 0
+                positions.remove(at: 0)
+                positions.append(x)
+            }
+        }
     }
 }
 
@@ -52,7 +94,7 @@ while (true) {
             // shiftUp()
             break
         case "j":
-            // shiftLeft()
+            shiftLeft()
             break
         case "k":
             // shiftDown()
