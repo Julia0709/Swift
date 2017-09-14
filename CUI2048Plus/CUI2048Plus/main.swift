@@ -13,6 +13,35 @@ let length = 4
 var time = 0;
 var originalMatrix: [[Int]] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
+// Select mode
+func selectMode(mode: inout String) -> Int {
+    var goal = 0
+    
+    switch (mode) {
+    case "1":
+        mode = "EASY"
+        goal = 512
+        break
+    case "2":
+        mode = "NORMAL"
+        goal = 2048
+        break
+    case "3":
+        mode = "HARD"
+        goal = 4092
+        break
+    case "4":
+        mode = "EXPERT"
+        goal = 8192
+        break
+    default:
+       print("Please type 1, 2, 3 or 4: ")
+        return goal
+    }
+    print(mode + " MODE: GAME START!");
+    return goal;
+}
+
 // Generate and add a new '2' tile
 func generateNewNumber() {
     var emptyTiles = [[Int]]()
@@ -153,7 +182,16 @@ func shiftRight() {
     rotate(matrix: &originalMatrix, times: &time)
 }
 
-print("Welcome to 2048+!\n")
+print("\n=============================")
+print("      Welcome to 2048+       ")
+print("============================")
+
+var goal:Int = 0
+while (goal == 0) {
+    print("Select a mode number:  1: EASY  2: NORMAL  3: HARD  4: EXPERT")
+    var input = readLine()!
+    goal = selectMode(mode: &input)
+}
 
 generateNewNumber()
 
@@ -163,7 +201,7 @@ while (true) {
 
     displayTiles()
 
-    print("i(↑)  j(←)  k(↓)  l(→) | p(pose)")
+    print("i: UP(↑)  j: LEFT(←)  k: DOWN(↓)  l: RIGHT(→) | r(RESET)")
     var move: String = readLine()!
 
     switch(move) {
@@ -183,7 +221,8 @@ while (true) {
             print("RIGHT(→)")
             shiftRight()
             break
-        case "p":
+        case "r":
+            print("RESET")
             break
         default:
             print("Enter again:\ni(↑)  j(←)  k(↓)  l(→) | p(pose)")
