@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A32EF3EC1F6B56ED0081E4F8 /* ManageGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32EF3EB1F6B56ED0081E4F8 /* ManageGame.swift */; };
 		A33F04D71F69FB7A00EC787B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F04D61F69FB7A00EC787B /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A32EF3EB1F6B56ED0081E4F8 /* ManageGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageGame.swift; sourceTree = "<group>"; };
 		A33F04D31F69FB7A00EC787B /* CUI2048Plus */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CUI2048Plus; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33F04D61F69FB7A00EC787B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				A33F04D61F69FB7A00EC787B /* main.swift */,
+				A32EF3EB1F6B56ED0081E4F8 /* ManageGame.swift */,
 			);
 			path = CUI2048Plus;
 			sourceTree = "<group>";
@@ -120,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32EF3EC1F6B56ED0081E4F8 /* ManageGame.swift in Sources */,
 				A33F04D71F69FB7A00EC787B /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,6 +256,7 @@
 				A33F04DC1F69FB7A00EC787B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
