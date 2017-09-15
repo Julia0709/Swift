@@ -33,7 +33,7 @@ func displayTiles() {
         let row = originalMatrix[y]
         print("+-------------------------------+\n|       |       |       |       |")
         for x in 0..<row.count {
-            var s = String(row[x])
+            var s = row[x] == 0 ? " " : String(row[x])
             let l = MAX_DIGITS - s.characters.count
             if (l > 0) {
                 for _ in 0...l - 1 {
