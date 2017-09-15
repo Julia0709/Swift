@@ -48,15 +48,14 @@ func shiftLeft() {
         
         var positions = [Int]()
         for x in 0..<row.count {
-            let n = row[x]
+            let n = originalMatrix[y][x]
             if (n == 0) {
                 positions.append(x)
                 continue
             }
             if (positions.count > 0) {
-                originalMatrix[y][positions[0]] = n
+                originalMatrix[y][positions.removeFirst()] = n
                 originalMatrix[y][x] = 0
-                positions.remove(at: 0)
                 positions.append(x)
             }
         }
@@ -91,7 +90,7 @@ func nextMove(onGame: inout Bool) -> Bool {
         break
     case "k":
         print("DOWN(↓)")
-        times = [3, 1]
+        times = [1, 3]
         break
     case "l":
         print("RIGHT(→)")
