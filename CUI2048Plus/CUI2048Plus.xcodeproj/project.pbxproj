@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A32EF3EC1F6B56ED0081E4F8 /* ManageGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32EF3EB1F6B56ED0081E4F8 /* ManageGame.swift */; };
+		A32EF3EC1F6B56ED0081E4F8 /* TileShift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32EF3EB1F6B56ED0081E4F8 /* TileShift.swift */; };
+		A32EF3EE1F6BA7BE0081E4F8 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32EF3ED1F6BA7BE0081E4F8 /* Layout.swift */; };
+		A32EF3F01F6BAA590081E4F8 /* ModeSelect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32EF3EF1F6BAA590081E4F8 /* ModeSelect.swift */; };
 		A33F04D71F69FB7A00EC787B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33F04D61F69FB7A00EC787B /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +26,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A32EF3EB1F6B56ED0081E4F8 /* ManageGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageGame.swift; sourceTree = "<group>"; };
+		A32EF3EB1F6B56ED0081E4F8 /* TileShift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileShift.swift; sourceTree = "<group>"; };
+		A32EF3ED1F6BA7BE0081E4F8 /* Layout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		A32EF3EF1F6BAA590081E4F8 /* ModeSelect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeSelect.swift; sourceTree = "<group>"; };
 		A33F04D31F69FB7A00EC787B /* CUI2048Plus */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CUI2048Plus; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33F04D61F69FB7A00EC787B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,7 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				A33F04D61F69FB7A00EC787B /* main.swift */,
-				A32EF3EB1F6B56ED0081E4F8 /* ManageGame.swift */,
+				A32EF3EB1F6B56ED0081E4F8 /* TileShift.swift */,
+				A32EF3ED1F6BA7BE0081E4F8 /* Layout.swift */,
+				A32EF3EF1F6BAA590081E4F8 /* ModeSelect.swift */,
 			);
 			path = CUI2048Plus;
 			sourceTree = "<group>";
@@ -123,8 +129,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A32EF3EC1F6B56ED0081E4F8 /* ManageGame.swift in Sources */,
+				A32EF3F01F6BAA590081E4F8 /* ModeSelect.swift in Sources */,
+				A32EF3EC1F6B56ED0081E4F8 /* TileShift.swift in Sources */,
 				A33F04D71F69FB7A00EC787B /* main.swift in Sources */,
+				A32EF3EE1F6BA7BE0081E4F8 /* Layout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
