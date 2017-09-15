@@ -8,8 +8,8 @@
 
 import Foundation
 
-let MAX_DIGITS = 4
-let length = 4
+let MAX_DIGITS = 5
+let SIDE_LENGTH = 4
 var time = 0;
 var originalMatrix: [[Int]] = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
@@ -65,7 +65,7 @@ func generateNewNumber() {
 func displayTiles() {
     for y in 0..<originalMatrix.count {
         let row = originalMatrix[y]
-        print("+---------------------------+\n|      |      |      |      |")
+        print("+-------------------------------+\n|       |       |       |       |")
         for x in 0..<row.count {
             var s = String(row[x])
             let l = MAX_DIGITS - s.characters.count
@@ -76,9 +76,9 @@ func displayTiles() {
             }
             print("| \(s) ", terminator:"")
         }
-        print("|\n|      |      |      |      |")
+        print("|\n|       |       |       |       |")
     }
-    print("+---------------------------+")
+    print("+-------------------------------+")
 }
 
 

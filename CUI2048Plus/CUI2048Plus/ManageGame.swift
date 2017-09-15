@@ -12,7 +12,7 @@ class ManageShift {
     // Rotate matrix clockwise
     func rotate(matrix: inout [[Int]], times: inout Int) -> [[Int]] {
         while (times > 0) {
-            var rotatedMatrix = Array(repeating: Array(repeating: 0, count: length), count: length)
+            var rotatedMatrix = Array(repeating: Array(repeating: 0, count: SIDE_LENGTH), count: SIDE_LENGTH)
             for y in 0..<matrix.count {
                 let l = matrix[y].count
                 for x in 0..<l {
