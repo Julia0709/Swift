@@ -40,8 +40,14 @@ func shiftLeft() {
                 if (n1 != n2) {
                     break
                 }
-                originalMatrix[y][x1] = n1 + n2
+                let sum = n1 + n2
+                originalMatrix[y][x1] = sum
+                score += sum
                 originalMatrix[y][x2] = 0
+                if (goal == sum) {
+                    print("CONGRATURATION, MISSHION CLEAR!!")
+                    onGame = false
+                }
                 break
             }
         }

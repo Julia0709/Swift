@@ -15,7 +15,7 @@ func selectMode(mode: inout String) -> Int {
     switch (mode) {
     case "1":
         mode = "EASY"
-        goal = 512
+        goal = 256
         break
     case "2":
         mode = "NORMAL"
