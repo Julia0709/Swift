@@ -8,43 +8,40 @@
 
 import Foundation
 
-var time = 0;
-
-// Rotate matrix clockwise
-func rotate(matrix: inout [[Int]], times: inout Int) -> [[Int]] {
+// Clockwise rotation
+func rotate(times: inout Int) {
     while (times > 0) {
         var rotatedMatrix = Array(repeating: Array(repeating: 0, count: SIDE_LENGTH), count: SIDE_LENGTH)
-        for y in 0..<matrix.count {
-            let l = matrix[y].count
+        for y in 0..<originalMatrix.count {
+            let l = originalMatrix[y].count
             for x in 0..<l {
-                rotatedMatrix[y][x] = matrix[l - x - 1][y]
+                rotatedMatrix[y][x] = originalMatrix[l - x - 1][y]
             }
         }
-        matrix = rotatedMatrix
+        originalMatrix = rotatedMatrix
         times -= 1
     }
-    return matrix
 }
 
-// Shift left
-func shiftLeft(matrix: inout [[Int]]) -> [[Int]] {
-    for y in 0..<matrix.count {
-        let row = matrix[y]
+// Base shift func
+func shiftLeft() {
+    for y in 0..<originalMatrix.count {
+        let row = originalMatrix[y]
         for x1 in 0..<row.count-1 {
-            let n1 = matrix[y][x1]
+            let n1 = originalMatrix[y][x1]
             if (n1 == 0) {
                 continue
             }
             for x2 in x1+1..<row.count {
-                let n2 = matrix[y][x2]
+                let n2 = originalMatrix[y][x2]
                 if (n2 == 0) {
                     continue
                 }
                 if (n1 != n2) {
                     break
                 }
-                matrix[y][x1] = n1 + n2
-                matrix[y][x2] = 0
+                originalMatrix[y][x1] = n1 + n2
+                originalMatrix[y][x2] = 0
                 break
             }
         }
@@ -57,80 +54,48 @@ func shiftLeft(matrix: inout [[Int]]) -> [[Int]] {
                 continue
             }
             if (positions.count > 0) {
-                matrix[y][positions[0]] = n
-                matrix[y][x] = 0
+                originalMatrix[y][positions[0]] = n
+                originalMatrix[y][x] = 0
                 positions.remove(at: 0)
                 positions.append(x)
             }
         }
     }
-    return matrix
 }
 
-// Shift up
-func shiftUp() {
-    // Rotate 270˚ clockwise
-    time = 3
-    rotate(matrix: &originalMatrix, times: &time)
+// Common shift func
+func shift(times: [Int]) {
+    var t1 = times[0]
+    rotate(times: &t1)
     
-    // Shift tiles
-    shiftLeft(matrix: &originalMatrix)
-    
-    // Rotate 90˚ clockwise
-    time = 1
-    rotate(matrix: &originalMatrix, times: &time)
+    shiftLeft()
+
+    var t2 = times[1]
+    rotate(times: &t2)
 }
 
-// Shift down
-func shiftDown() {
-    // Rotate 90˚ clockwise
-    time = 1
-    rotate(matrix: &originalMatrix, times: &time)
-    
-    
-    // Shift tiles
-    shiftLeft(matrix: &originalMatrix)
-    
-    // Rotate 270˚ clockwise
-    time = 3
-    rotate(matrix: &originalMatrix, times: &time)
-}
-
-// Shift right
-func shiftRight() {
-    // Rotate 180˚ clockwise
-    time = 2
-    rotate(matrix: &originalMatrix, times: &time)
-    
-    
-    // Shift tiles
-    shiftLeft(matrix: &originalMatrix)
-    
-    // Rotate 180˚ clockwise
-    time = 2
-    rotate(matrix: &originalMatrix, times: &time)
-}
 
 func nextMove(onGame: inout Bool) -> Bool {
     print("i: UP(↑)  j: LEFT(←)  k: DOWN(↓)  l: RIGHT(→) | q: (QUIT)")
     let move: String = readLine()!
-    
+    var times = [Int]()
+
     switch(move) {
     case "i":
         print("UP(↑)")
-        shiftUp()
+        times = [3, 1]
         break
     case "j":
         print("LEFT(←)")
-        shiftLeft(matrix: &originalMatrix)
+        times = [0, 0]
         break
     case "k":
         print("DOWN(↓)")
-        shiftDown()
+        times = [3, 1]
         break
     case "l":
         print("RIGHT(→)")
-        shiftRight()
+        times = [2, 2]
         break
     case "q":
         print("QUIT")
@@ -138,6 +103,10 @@ func nextMove(onGame: inout Bool) -> Bool {
         break
     default:
         print("Oops! Please enter again.")
+    }
+    
+    if (times.count == 2) {
+        shift(times: times)
     }
     return onGame;
 }
